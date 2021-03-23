@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.topBarContainer {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
