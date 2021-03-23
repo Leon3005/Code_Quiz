@@ -8,3 +8,16 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.startMainContainer {
+  text-align: center;
+}
+
+.questionsContainer {
+  text-align: center;
+}
+
+.answerBoxes {
+  display: flex;
+  justify-content: center;
+}
