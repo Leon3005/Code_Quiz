@@ -9,14 +9,9 @@ const startButton = document.getElementById("startButton");
 let time = 60;
 
 const startTimer = () => {
-  remainingTime.innerHTML = time;
-  const countdown = () => {
-    time = time - 1;
-  };
   setInterval(function () {
-    countdown();
+    remainingTime.innerHTML = time--;
   }, 1000);
-  console.log(time);
 };
 
 const createQuestionCont = (questions) => {
@@ -32,8 +27,10 @@ const createQuestionCont = (questions) => {
 };
 
 const startQuiz = () => {
+  // Begin timer
+  startTimer();
   // create questionsCont
-  createQuestionCont(questions[0]);
+  // createQuestionCont(questions[0]);
   // remove startMainContainer
   // Append questionsCont
 };
