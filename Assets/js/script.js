@@ -23,10 +23,15 @@ const createQuestionCont = () => {
   const questionCont = document.createElement("div");
   questionCont.setAtrribute("class", "questionsContainer");
   questionCont.setAtrribute("data-answer", questions.correctAnswer);
+
+  const h2 = document.createElement("h2");
+  h2.setAttribute("id", "question");
+  h2.textContent = questions.question;
 };
 
 const startQuiz = () => {
   // create questionsCont
+  createQuestionCont(questions[0]);
   // remove startMainContainer
   // Append questionsCont
 };
