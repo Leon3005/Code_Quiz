@@ -17,8 +17,7 @@ const startTimer = () => {
 };
 
 const createQuestionCont = (questionParam) => {
-  const questionCont = document.createElement("div");
-  questionCont.setAttribute("class", "questionsContainer");
+  const questionCont = document.getElementsByClassName("questionsContainer");
   questionCont.setAttribute("data-answer", questionParam.correctAnswer);
 
   const h2 = document.createElement("h2");
@@ -34,7 +33,11 @@ const createQuestionCont = (questionParam) => {
     const button = document.createElement("button");
     button.setAttribute("id", `answer${i + 1}`);
     button.textContent = answers[i];
+    answerCont.appendChild(button);
   }
+
+  questionCont.appendChild(h2);
+  questionCont.appendChild(answerCont);
 
   console.log("hi");
 };
