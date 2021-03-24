@@ -2,7 +2,7 @@ const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
 let time = 60;
 
-const startTimer = (remainingTime) => {
+const startTimer = () => {
   remainingTime.innerHTML = time;
 };
 
