@@ -19,14 +19,16 @@ const startTimer = () => {
   console.log(time);
 };
 
-const createQuestionCont = () => {
+const createQuestionCont = (questions) => {
   const questionCont = document.createElement("div");
-  questionCont.setAtrribute("class", "questionsContainer");
-  questionCont.setAtrribute("data-answer", questions.correctAnswer);
+  questionCont.setAttribute("class", "questionsContainer");
+  questionCont.setAttribute("data-answer", questions.correctAnswer);
 
   const h2 = document.createElement("h2");
   h2.setAttribute("id", "question");
   h2.textContent = questions.question;
+
+  console.log("hi");
 };
 
 const startQuiz = () => {
@@ -36,4 +38,4 @@ const startQuiz = () => {
   // Append questionsCont
 };
 
-startButton.addEventListener("click", startTimer);
+startButton.addEventListener("click", startQuiz);
