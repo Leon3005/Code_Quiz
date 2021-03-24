@@ -19,4 +19,16 @@ const startTimer = () => {
   console.log(time);
 };
 
+const createQuestionCont = () => {
+  const questionCont = document.createElement("div");
+  questionCont.setAtrribute("class", "questionsContainer");
+  questionCont.setAtrribute("data-answer", questions.correctAnswer);
+};
+
+const startQuiz = () => {
+  // create questionsCont
+  // remove startMainContainer
+  // Append questionsCont
+};
+
 startButton.addEventListener("click", startTimer);
