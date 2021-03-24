@@ -11,9 +11,12 @@ let time = 60;
 const startTimer = () => {
   remainingTime.innerHTML = time;
   const countdown = () => {
-    time -= 1;
+    time = time - 1;
   };
-  setInterval(countdown, 1000);
+  setInterval(function () {
+    countdown();
+  }, 1000);
+  console.log(time);
 };
 
 startButton.addEventListener("click", startTimer);
