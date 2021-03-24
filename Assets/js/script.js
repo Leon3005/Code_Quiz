@@ -1,8 +1,10 @@
-const questions = {
-  question: "When did Javascript first appear?",
-  answer: ["1995", "2000", "1990", "2005"],
-  correctAnswer: "1995",
-};
+const questions = [
+  {
+    question: "When did Javascript first appear?",
+    answer: ["1995", "2000", "1990", "2005"],
+    correctAnswer: "1995",
+  },
+];
 
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
@@ -14,14 +16,25 @@ const startTimer = () => {
   }, 1000);
 };
 
-const createQuestionCont = (questions) => {
+const createQuestionCont = (questionParam) => {
   const questionCont = document.createElement("div");
   questionCont.setAttribute("class", "questionsContainer");
-  questionCont.setAttribute("data-answer", questions.correctAnswer);
+  questionCont.setAttribute("data-answer", questionParam.correctAnswer);
 
   const h2 = document.createElement("h2");
   h2.setAttribute("id", "question");
-  h2.textContent = questions.question;
+  h2.textContent = questionParam.question;
+
+  const answerCont = document.createElement("div");
+  answerCont.setAttribute("class", "answerBoxes");
+
+  const answers = questionParam.answer;
+
+  for (let i = 0; i < answers.length; i++) {
+    const button = document.createElement("button");
+    button.setAttribute("id", `answer${i + 1}`);
+    button.textContent = answers[i];
+  }
 
   console.log("hi");
 };
@@ -30,7 +43,7 @@ const startQuiz = () => {
   // Begin timer
   startTimer();
   // create questionsCont
-  // createQuestionCont(questions[0]);
+  createQuestionCont(questions[0]);
   // remove startMainContainer
   // Append questionsCont
 };
