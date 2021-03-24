@@ -11,13 +11,17 @@ const startButton = document.getElementById("startButton");
 let time = 60;
 
 const startTimer = () => {
-  setInterval(function () {
+  let countdown = setInterval(function () {
     remainingTime.innerHTML = time--;
   }, 1000);
+
+  if (time <= 0) {
+    clearInterval(countdown);
+  }
 };
 
 const createQuestionCont = (questionParam) => {
-  const questionCont = document.getElementsByClassName("questionsContainer");
+  const questionCont = document.getElementById("questionsContainer");
   questionCont.setAttribute("data-answer", questionParam.correctAnswer);
 
   const h2 = document.createElement("h2");
@@ -42,13 +46,15 @@ const createQuestionCont = (questionParam) => {
   console.log("hi");
 };
 
+const intro = document.getElementById("introSection");
+
 const startQuiz = () => {
   // Begin timer
   startTimer();
   // create questionsCont
   createQuestionCont(questions[0]);
   // remove startMainContainer
-  // Append questionsCont
+  intro.remove();
 };
 
 startButton.addEventListener("click", startQuiz);
