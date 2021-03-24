@@ -1,9 +1,14 @@
-const startQuiz = () => {
-  const startTime = 60;
-  const ticker = setInterval(() => {
-    startTime - 1;
-    document.getElementById("timer");
-  }, 1000);
+const remainingTime = document.getElementById("timer");
+const startButton = document.getElementById("startButton");
+let time = 60;
+
+const startTimer = (remainingTime) => {
+  remainingTime.innerHTML = time;
 };
 
-// startQuiz();
+// const countdown = () => {
+//   time -= 1;
+//   setInterval(countdown, 1000);
+// };
+
+startButton.addEventListener("click", startTimer);
