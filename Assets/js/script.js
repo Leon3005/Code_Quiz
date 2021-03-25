@@ -4,6 +4,11 @@ const questions = [
     answer: ["1995", "2000", "1990", "2005"],
     correctAnswer: "1995",
   },
+  {
+    question: "Which one of these is a Javascript framework?",
+    answer: ["Judy", "Pumpkin", "React", "Angle"],
+    correctAnswer: "React",
+  },
 ];
 
 const remainingTime = document.getElementById("timer");
@@ -48,6 +53,16 @@ const chosesAnswer = (event) => {
   const currentTarget = event.currentTarget;
 
   if (target.matches("button")) {
+    const answer = target.getAttribute("data-answer");
+    const rightAnswer = currentTarget.getAttribute("data-answer");
+
+    if (answer === correctAnswer) {
+      index += 1;
+      document.getElementById("question").remove();
+      createQuestionCont();
+    } else {
+      alert("WRONG");
+    }
   }
 };
 
