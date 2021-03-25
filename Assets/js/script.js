@@ -88,7 +88,12 @@ const chosenAnswer = (event) => {
       questionCont.removeChild(document.getElementById("answerBoxes"));
       createQuestionCont(questions[i]);
     } else {
-      alert("WRONG");
+      const answerCont = document.getElementById("answerBoxes");
+      const h3 = document.createElement("h3");
+      answerCont.appendChild(h3);
+      h3.setAttribute("id", "wrongAnswer");
+      h3.textContent = "Incorrect!";
+      // alert("WRONG");
       time -= 9;
     }
   }
