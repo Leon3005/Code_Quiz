@@ -17,11 +17,7 @@ const startTimer = () => {
       clearInterval(countdown);
     }
   }, 1000);
-
-  console.log(countdown);
 };
-
-// FIX TIMER GOING BELOW 0
 
 const createQuestionCont = (questionParam) => {
   const questionCont = document.getElementById("questionsContainer");
@@ -45,8 +41,14 @@ const createQuestionCont = (questionParam) => {
 
   questionCont.appendChild(h2);
   questionCont.appendChild(answerCont);
+};
 
-  console.log("hi");
+const chosesAnswer = (event) => {
+  const target = event.target;
+  const currentTarget = event.currentTarget;
+
+  if (target.matches("button")) {
+  }
 };
 
 const intro = document.getElementById("introSection");
