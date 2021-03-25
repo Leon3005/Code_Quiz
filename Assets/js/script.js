@@ -13,6 +13,7 @@ const questions = [
 
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
+let i = 0;
 let time = 5;
 
 const startTimer = () => {
@@ -23,7 +24,6 @@ const startTimer = () => {
     }
   }, 1000);
 };
-
 const createQuestionCont = (questionParam) => {
   const questionCont = document.getElementById("questionsContainer");
   questionCont.setAttribute("data-answer", questionParam.correctAnswer);
@@ -46,24 +46,8 @@ const createQuestionCont = (questionParam) => {
 
   questionCont.appendChild(h2);
   questionCont.appendChild(answerCont);
-};
 
-const chosesAnswer = (event) => {
-  const target = event.target;
-  const currentTarget = event.currentTarget;
-
-  if (target.matches("button")) {
-    const answer = target.getAttribute("data-answer");
-    const rightAnswer = currentTarget.getAttribute("data-answer");
-
-    if (answer === correctAnswer) {
-      index += 1;
-      document.getElementById("question").remove();
-      createQuestionCont();
-    } else {
-      alert("WRONG");
-    }
-  }
+  answerCont.addEventListener("click", chosenAnswer);
 };
 
 const intro = document.getElementById("introSection");
@@ -78,3 +62,22 @@ const startQuiz = () => {
 };
 
 startButton.addEventListener("click", startQuiz);
+
+const chosenAnswer = (event) => {
+  const target = event.target;
+  const currentTarget = event.currentTarget;
+
+  if (target.matches("button")) {
+    const answer = target.getAttribute("data-answer");
+    const correctAnswer = currentTarget.getAttribute("data-answer");
+
+    if (answer === correctAnswer) {
+      i += 1;
+      const questionRemove = document.getElementById("questionsContainer");
+      questionRemove.remove();
+      createQuestionCont();
+    } else {
+      alert("WRONG");
+    }
+  }
+};
