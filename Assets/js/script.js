@@ -8,17 +8,22 @@ const questions = [
 
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
-let time = 60;
+let time = 5;
 
 const startTimer = () => {
   let countdown = setInterval(function () {
     remainingTime.innerHTML = time--;
   }, 1000);
 
-  if (time <= 0) {
-    clearInterval(countdown);
+  if (time < 0) {
+    console.log("here");
+    // clearInterval(countdown);
   }
+
+  console.log(countdown);
 };
+
+// FIX TIMER GOING BELOW 0
 
 const createQuestionCont = (questionParam) => {
   const questionCont = document.getElementById("questionsContainer");
