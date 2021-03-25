@@ -89,6 +89,7 @@ const chosenAnswer = (event) => {
       createQuestionCont(questions[i]);
     } else {
       alert("WRONG");
+      time -= 9;
     }
   }
 };
