@@ -9,6 +9,11 @@ const questions = [
     answer: ["Judy", "Pumpkin", "React", "Angle"],
     correctAnswer: "React",
   },
+  {
+    question: "Which of the below would you use for comments in HTML?",
+    answer: ["<!-- -->", "//", "/*", "$$"],
+    correctAnswer: "<!-- -->",
+  },
 ];
 
 const remainingTime = document.getElementById("timer");
@@ -23,6 +28,25 @@ const startTimer = () => {
       clearInterval(countdown);
     }
   }, 1000);
+};
+
+const chosenAnswer = (event) => {
+  const target = event.target;
+  const currentTarget = event.currentTarget;
+
+  if (target.matches("button")) {
+    const answer = target.getAttribute("data-answer");
+    const correctAnswer = currentTarget.getAttribute("data-answer");
+
+    if (answer === correctAnswer) {
+      i += 1;
+      const questionRemove = document.getElementById("questionsContainer");
+      // questionRemove.remove();
+      createQuestionCont(questions[i]);
+    } else {
+      alert("WRONG");
+    }
+  }
 };
 
 const createQuestionCont = (questionParam) => {
@@ -49,25 +73,6 @@ const createQuestionCont = (questionParam) => {
   questionCont.appendChild(answerCont);
 
   answerCont.addEventListener("click", chosenAnswer);
-};
-
-const chosenAnswer = (event) => {
-  const target = event.target;
-  const currentTarget = event.currentTarget;
-
-  if (target.matches("button")) {
-    const answer = target.getAttribute("data-answer");
-    const correctAnswer = currentTarget.getAttribute("data-answer");
-
-    if (answer === correctAnswer) {
-      i += 1;
-      const questionRemove = document.getElementById("questionsContainer");
-      questionRemove.remove();
-      createQuestionCont(questions[0]);
-    } else {
-      alert("WRONG");
-    }
-  }
 };
 
 const intro = document.getElementById("introSection");
