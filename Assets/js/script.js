@@ -61,14 +61,14 @@ const createQuestionCont = (questionParam) => {
 
 const chosenAnswer = (event) => {
   const target = event.target;
-  const currentTarget = event.currentTarget;
 
   if (target.matches("button")) {
     const answer = target.getAttribute("data-answer");
-    const correctAnswer = currentTarget.getAttribute("data-correctanswer");
+    const correctAnswer = target.getAttribute("data-correctanswer");
 
     if (answer === correctAnswer) {
       i += 1;
+      console.log("hi");
       const questionCont = document.getElementById("questionsContainer");
       questionCont.removeChild(document.getElementById("question"));
       questionCont.removeChild(document.getElementById("answerBoxes"));
