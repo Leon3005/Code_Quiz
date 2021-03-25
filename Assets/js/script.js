@@ -1,3 +1,4 @@
+//This is the array of questions and answers
 const questions = [
   {
     question: "When did Javascript first appear?",
@@ -16,13 +17,17 @@ const questions = [
   },
 ];
 
+//Created variables for ID's from the HTML file
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
+//Setting index to 0 (for arrays) and how many seconds the timer starts at
 let i = 0;
-let time = 5;
+let time = 80;
 
+//Function to start the timer and countdown to 0, then stop
 const startTimer = () => {
   let countdown = setInterval(function () {
+    //This will minus 1 from time
     remainingTime.innerHTML = time--;
     if (time < 0) {
       clearInterval(countdown);
@@ -30,8 +35,11 @@ const startTimer = () => {
   }, 1000);
 };
 
+//Function to create the question container with buttons.
+//questionParam will be replaced with the questions array when function is called
 const createQuestionCont = (questionParam) => {
   const questionCont = document.getElementById("questionsContainer");
+  //data-answer will be used later to choose the correct answer
   questionCont.setAttribute("data-answer", questionParam.correctAnswer);
 
   const h2 = document.createElement("h2");
@@ -43,32 +51,38 @@ const createQuestionCont = (questionParam) => {
 
   const answers = questionParam.answer;
 
+  //This for loop will go through each object in the array, and create a button with a dynamic
+  //ID for each one.
   for (let i = 0; i < answers.length; i++) {
     const button = document.createElement("button");
     button.setAttribute("id", `answer${i + 1}`);
-    // 2 set attributes below make all answers say WRONG
+    //Setting the data answers for buttons. It will look at the objects in the array.
     button.setAttribute("data-answer", questionParam.answer[i]);
     button.setAttribute("data-correctanswer", questionParam.correctAnswer);
     button.textContent = answers[i];
     answerCont.appendChild(button);
   }
 
+  //Appending the created elements to the question container
   questionCont.appendChild(h2);
   questionCont.appendChild(answerCont);
 
+  //Event listener to run the chosenAnswer function when a button is clicked
   answerCont.addEventListener("click", chosenAnswer);
 };
 
+//Creating a function to look at the targer(button) that is clicked
 const chosenAnswer = (event) => {
   const target = event.target;
 
+  //Creating an if statement to get the data attributes
   if (target.matches("button")) {
     const answer = target.getAttribute("data-answer");
     const correctAnswer = target.getAttribute("data-correctanswer");
 
+    //if statement to tell JS what to do if an answer is correct or incorrect
     if (answer === correctAnswer) {
       i += 1;
-      console.log("hi");
       const questionCont = document.getElementById("questionsContainer");
       questionCont.removeChild(document.getElementById("question"));
       questionCont.removeChild(document.getElementById("answerBoxes"));
@@ -79,8 +93,10 @@ const chosenAnswer = (event) => {
   }
 };
 
+//Declaring a variable to grab the introSection of my HTML
 const intro = document.getElementById("introSection");
 
+//Calling all of the functions created above
 const startQuiz = () => {
   // Begin timer
   startTimer();
