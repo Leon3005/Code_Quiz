@@ -13,12 +13,10 @@ let time = 5;
 const startTimer = () => {
   let countdown = setInterval(function () {
     remainingTime.innerHTML = time--;
+    if (time < 0) {
+      clearInterval(countdown);
+    }
   }, 1000);
-
-  if (time < 0) {
-    console.log("here");
-    // clearInterval(countdown);
-  }
 
   console.log(countdown);
 };
