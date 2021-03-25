@@ -24,6 +24,7 @@ const startTimer = () => {
     }
   }, 1000);
 };
+
 const createQuestionCont = (questionParam) => {
   const questionCont = document.getElementById("questionsContainer");
   questionCont.setAttribute("data-answer", questionParam.correctAnswer);
@@ -50,19 +51,6 @@ const createQuestionCont = (questionParam) => {
   answerCont.addEventListener("click", chosenAnswer);
 };
 
-const intro = document.getElementById("introSection");
-
-const startQuiz = () => {
-  // Begin timer
-  startTimer();
-  // create questionsCont
-  createQuestionCont(questions[0]);
-  // remove startMainContainer
-  intro.remove();
-};
-
-startButton.addEventListener("click", startQuiz);
-
 const chosenAnswer = (event) => {
   const target = event.target;
   const currentTarget = event.currentTarget;
@@ -75,9 +63,22 @@ const chosenAnswer = (event) => {
       i += 1;
       const questionRemove = document.getElementById("questionsContainer");
       questionRemove.remove();
-      createQuestionCont();
+      createQuestionCont(questions[0]);
     } else {
       alert("WRONG");
     }
   }
 };
+
+const intro = document.getElementById("introSection");
+
+const startQuiz = () => {
+  // Begin timer
+  startTimer();
+  // create questionsCont
+  createQuestionCont(questions[0]);
+  // remove startMainContainer
+  intro.remove();
+};
+
+startButton.addEventListener("click", startQuiz);
