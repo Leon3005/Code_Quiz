@@ -30,7 +30,9 @@ const startTimer = () => {
     //This will minus 1 from time
     remainingTime.innerHTML = time--;
     if (time < 0) {
+      prompt("GAME OVER! Enter your username to log your score:");
       clearInterval(countdown);
+      window.location.replace("../../highscores.html");
     }
   }, 1000);
 };
