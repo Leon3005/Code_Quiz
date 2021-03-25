@@ -46,6 +46,7 @@ const createQuestionCont = (questionParam) => {
   for (let i = 0; i < answers.length; i++) {
     const button = document.createElement("button");
     button.setAttribute("id", `answer${i + 1}`);
+    button.setAttribute("data-answer", questionParam.correctAnswer);
     button.textContent = answers[i];
     answerCont.appendChild(button);
   }
