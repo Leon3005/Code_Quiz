@@ -30,25 +30,6 @@ const startTimer = () => {
   }, 1000);
 };
 
-const chosenAnswer = (event) => {
-  const target = event.target;
-  const currentTarget = event.currentTarget;
-
-  if (target.matches("button")) {
-    const answer = target.getAttribute("data-answer");
-    const correctAnswer = currentTarget.getAttribute("data-answer");
-
-    if (answer === correctAnswer) {
-      i += 1;
-      const questionRemove = document.getElementById("questionsContainer");
-      // questionRemove.remove();
-      createQuestionCont(questions[i]);
-    } else {
-      alert("WRONG");
-    }
-  }
-};
-
 const createQuestionCont = (questionParam) => {
   const questionCont = document.getElementById("questionsContainer");
   questionCont.setAttribute("data-answer", questionParam.correctAnswer);
@@ -58,7 +39,7 @@ const createQuestionCont = (questionParam) => {
   h2.textContent = questionParam.question;
 
   const answerCont = document.createElement("div");
-  answerCont.setAttribute("class", "answerBoxes");
+  answerCont.setAttribute("id", "answerBoxes");
 
   const answers = questionParam.answer;
 
@@ -75,13 +56,33 @@ const createQuestionCont = (questionParam) => {
   answerCont.addEventListener("click", chosenAnswer);
 };
 
+const chosenAnswer = (event) => {
+  const target = event.target;
+  const currentTarget = event.currentTarget;
+
+  if (target.matches("button")) {
+    const answer = target.getAttribute("data-answer");
+    const correctAnswer = currentTarget.getAttribute("data-answer");
+
+    if (answer === correctAnswer) {
+      i += 1;
+      const questionCont = document.getElementById("questionsContainer");
+      questionCont.removeChild(document.getElementById("question"));
+      questionCont.removeChild(document.getElementById("answerBoxes"));
+      createQuestionCont(questions[i]);
+    } else {
+      alert("WRONG");
+    }
+  }
+};
+
 const intro = document.getElementById("introSection");
 
 const startQuiz = () => {
   // Begin timer
   startTimer();
   // create questionsCont
-  createQuestionCont(questions[0]);
+  createQuestionCont(questions[i]);
   // remove startMainContainer
   intro.remove();
 };

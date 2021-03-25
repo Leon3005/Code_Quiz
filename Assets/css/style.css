@@ -21,7 +21,7 @@ body {
   text-align: center;
 }
 
-.answerBoxes {
+#answerBoxes {
   /* width: 15%;
   position: absolute;
   top: 40%;
