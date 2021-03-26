@@ -54,7 +54,7 @@ const startTimer = () => {
     if (time < 0) {
       prompt("GAME OVER! Enter your username to log your score:");
       clearInterval(countdown);
-      window.location.replace("../../highscores.html");
+      window.location.replace("/Assets/html/highscores.html");
     }
   }, 1000);
 };
@@ -124,7 +124,7 @@ const chosenAnswer = (event) => {
     if (target.matches("button") && answer === "Cascading Style Sheet") {
       prompt("GAME OVER! Enter your username to log your score:");
       clearInterval(countdown);
-      window.location.replace("../../highscores.html");
+      window.location.replace("/Assets/html/highscores.html");
     }
   }
 };
