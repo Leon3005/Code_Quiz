@@ -43,6 +43,7 @@ const startButton = document.getElementById("startButton");
 //Setting index to 0 (for arrays) and how many seconds the timer starts at
 let i = 0;
 let time = 80;
+//making countdown available in global to use later on
 let countdown;
 
 //Function to start the timer and countdown to 0, then stop
@@ -57,12 +58,6 @@ const startTimer = () => {
     }
   }, 1000);
 };
-
-// const endScreen = () => {
-//   prompt("GAME OVER! Enter your username to log your score:");
-//   clearInterval(countdown);
-//   window.location.replace("../../highscores.html");
-// };
 
 //Function to create the question container with buttons.
 //questionParam will be replaced with the questions array when function is called
@@ -125,7 +120,8 @@ const chosenAnswer = (event) => {
       // alert("WRONG");
       time -= 9;
     }
-    if (target.matches("button") && correctAnswer === "Cascading Style Sheet") {
+    //This will look for if the last question is answered, then ask for a name for highscores.
+    if (target.matches("button") && answer === "Cascading Style Sheet") {
       prompt("GAME OVER! Enter your username to log your score:");
       clearInterval(countdown);
       window.location.replace("../../highscores.html");
