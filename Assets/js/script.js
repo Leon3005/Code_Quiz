@@ -1,7 +1,7 @@
 //This is the array of questions and answers
 const questions = [
   {
-    question: "When did Javascript first appear?",
+    question: "What year did Javascript first appear?",
     answer: ["1995", "2000", "1990", "2005"],
     correctAnswer: "1995",
   },
@@ -14,6 +14,21 @@ const questions = [
     question: "Which of the below would you use for comments in HTML?",
     answer: ["<!-- -->", "//", "/*", "$$"],
     correctAnswer: "<!-- -->",
+  },
+  {
+    question: "Which tag would you use to link a Javascript file in HTML?",
+    answer: ["link", "script", "js", "href"],
+    correctAnswer: "script",
+  },
+  {
+    question: "What does CSS stand for?",
+    answer: [
+      "Cascading Style Sheet",
+      "Country Singers Shop",
+      "Cascading Simple Sheet",
+      "Cascading Sheet Style",
+    ],
+    correctAnswer: "Cascading Style Sheet",
   },
 ];
 
