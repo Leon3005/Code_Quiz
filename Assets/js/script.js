@@ -31,9 +31,9 @@ const questions = [
     correctAnswer: "Cascading Style Sheet",
   },
   {
-    question: "End of Quiz!",
-    answer: ["Submit your highscore!"],
-    correctAnswer: "Submit your highscore!",
+    question: "End of Quiz",
+    answer: ["Go to Highscores!"],
+    correctAnswer: "Go to Highscores!",
   },
 ];
 
@@ -43,11 +43,12 @@ const startButton = document.getElementById("startButton");
 //Setting index to 0 (for arrays) and how many seconds the timer starts at
 let i = 0;
 let time = 80;
+let countdown;
 
 //Function to start the timer and countdown to 0, then stop
 const startTimer = () => {
   let countdown = setInterval(function () {
-    //This will minus 1 from time
+    //This will minus 1 second from time
     remainingTime.innerHTML = time--;
     if (time < 0) {
       prompt("GAME OVER! Enter your username to log your score:");
@@ -56,6 +57,12 @@ const startTimer = () => {
     }
   }, 1000);
 };
+
+// const endScreen = () => {
+//   prompt("GAME OVER! Enter your username to log your score:");
+//   clearInterval(countdown);
+//   window.location.replace("../../highscores.html");
+// };
 
 //Function to create the question container with buttons.
 //questionParam will be replaced with the questions array when function is called
@@ -118,21 +125,12 @@ const chosenAnswer = (event) => {
       // alert("WRONG");
       time -= 9;
     }
+    if (target.matches("button") && correctAnswer === "Cascading Style Sheet") {
+      prompt("GAME OVER! Enter your username to log your score:");
+      clearInterval(countdown);
+      window.location.replace("../../highscores.html");
+    }
   }
-
-  const button = document.getElementById("answer1");
-  if (
-    target.matches("button") &&
-    button.textContent === "Cascading Style Sheet"
-  ) {
-    console.log("hi");
-  }
-};
-
-const endScreen = () => {
-  prompt("GAME OVER! Enter your username to log your score:");
-  clearInterval(countdown);
-  window.location.replace("../../highscores.html");
 };
 
 //Declaring a variable to grab the introSection of my HTML
