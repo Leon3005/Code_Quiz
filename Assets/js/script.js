@@ -30,6 +30,11 @@ const questions = [
     ],
     correctAnswer: "Cascading Style Sheet",
   },
+  {
+    question: "End of Quiz!",
+    answer: ["Submit your highscore!"],
+    correctAnswer: "Submit your highscore!",
+  },
 ];
 
 //Created variables for ID's from the HTML file
@@ -88,7 +93,7 @@ const createQuestionCont = (questionParam) => {
   answerCont.addEventListener("click", chosenAnswer);
 };
 
-//Creating a function to look at the targer(button) that is clicked
+//Creating a function to look at the target(button) that is clicked
 const chosenAnswer = (event) => {
   const target = event.target;
 
@@ -114,6 +119,20 @@ const chosenAnswer = (event) => {
       time -= 9;
     }
   }
+
+  const button = document.getElementById("answer1");
+  if (
+    target.matches("button") &&
+    button.textContent === "Cascading Style Sheet"
+  ) {
+    console.log("hi");
+  }
+};
+
+const endScreen = () => {
+  prompt("GAME OVER! Enter your username to log your score:");
+  clearInterval(countdown);
+  window.location.replace("../../highscores.html");
 };
 
 //Declaring a variable to grab the introSection of my HTML
