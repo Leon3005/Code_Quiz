@@ -37,6 +37,14 @@ const questions = [
   },
 ];
 
+const scores = [
+  {
+    position: ["1", "2", "3", "4", "5"],
+    username: ["LeonW", "", "", "", ""],
+    score: ["", "", "", "", ""],
+  },
+];
+
 //Created variables for ID's from the HTML file
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
@@ -124,6 +132,7 @@ const chosenAnswer = (event) => {
     //This will look for if the last question is answered, then ask for a name for highscores.
     if (target.matches("button") && answer === "Cascading Style Sheet") {
       prompt("GAME OVER! Enter your username to log your score:");
+      logHighscore();
       clearInterval(countdown);
       window.location.replace("/Assets/html/highscores.html");
     }
@@ -147,12 +156,13 @@ startButton.addEventListener("click", startQuiz);
 
 //Time is being logged instantly. need to fix
 
-if (highscore !== null) {
-  if (time > highscore) {
+const logHighscore = () => {
+  if (highscore !== null) {
+    if (time > highscore) {
+      localStorage.setItem("highscore", time);
+    }
+  } else {
     localStorage.setItem("highscore", time);
   }
-} else {
-  localStorage.setItem("highscore", time);
-}
-
-console.log(highscore);
+  console.log(highscore);
+};
