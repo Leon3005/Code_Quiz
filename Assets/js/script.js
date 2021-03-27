@@ -43,10 +43,7 @@ const startButton = document.getElementById("startButton");
 //Setting index to 0 (for arrays) and how many seconds the timer starts at. Also highscore value
 let i = 0;
 let time = 80;
-const highscoreNum = 5;
-const highscore = localStorage.getItem("highscore");
-
-
+let highscore = localStorage.getItem("highscore");
 //making countdown available in global to use later on
 let countdown;
 
@@ -128,7 +125,6 @@ const chosenAnswer = (event) => {
     if (target.matches("button") && answer === "Cascading Style Sheet") {
       prompt("GAME OVER! Enter your username to log your score:");
       clearInterval(countdown);
-      checkScore(account.time)
       window.location.replace("/Assets/html/highscores.html");
     }
   }
@@ -149,20 +145,14 @@ const startQuiz = () => {
 
 startButton.addEventListener("click", startQuiz);
 
-const checkScore = () => {
-  const highscoreParse = JSON.parse(highscore) || [];
-  const lowestScore = highscoreParse[highscoreNum — 1]?.time ?? 0;
+//Time is being logged instantly. need to fix
 
-  if (time > lowestScore) {
-    saveHighscore(time, highscoreParse);
-    showHighscore();
-
+if (highscore !== null) {
+  if (time > highscore) {
+    localStorage.setItem("highscore", time);
   }
+} else {
+  localStorage.setItem("highscore", time);
 }
 
-// if (highscore !== null) {
-//   if (time > highscore) {
-//     localStorage.setItem("highscore", time);
-//   }
-// }
 console.log(highscore);
