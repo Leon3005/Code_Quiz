@@ -160,12 +160,12 @@ startButton.addEventListener("click", startQuiz);
 
 const logHighscore = () => {
   if (highscore !== null) {
-    if (time > highscore) {
-      scores.push(time);
-      localStorage.setItem("highscore", time);
-      console.log(scores);
-    }
+    scores.push(time);
+    localStorage.setItem("highscore", time);
+    console.log(scores);
   } else {
     localStorage.setItem("highscore", time);
   }
 };
+
+// Currently only logs the score
