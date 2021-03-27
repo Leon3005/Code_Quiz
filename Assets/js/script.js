@@ -40,9 +40,11 @@ const questions = [
 //Created variables for ID's from the HTML file
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
-//Setting index to 0 (for arrays) and how many seconds the timer starts at
+//Setting index to 0 (for arrays) and how many seconds the timer starts at. Also highscore value
 let i = 0;
 let time = 80;
+let highscore = localStorage.getItem("highscore");
+
 //making countdown available in global to use later on
 let countdown;
 
@@ -143,3 +145,11 @@ const startQuiz = () => {
 };
 
 startButton.addEventListener("click", startQuiz);
+
+if (highscore !== null) {
+  if (time > highscore && prompt) {
+    localStorage.setItem("highscore", time);
+  }
+}
+
+console.log(highscore);
