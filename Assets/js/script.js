@@ -45,8 +45,6 @@ const scores = [
   },
 ];
 
-const username = [];
-
 //Created variables for ID's from the HTML file
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
@@ -58,7 +56,8 @@ let highscore = localStorage.getItem("highscore");
 let countdown;
 
 const endGame = () => {
-  username.push(prompt("GAME OVER! Enter your username to log your score:"));
+  let username = prompt("GAME OVER! Enter your username to log your score:");
+  localStorage.setItem("username", username);
   logHighscore();
   clearInterval(countdown);
   window.location.replace("/Assets/html/highscores.html");
