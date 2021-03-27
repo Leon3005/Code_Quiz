@@ -45,6 +45,8 @@ const scores = [
   },
 ];
 
+const username = [];
+
 //Created variables for ID's from the HTML file
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
@@ -55,13 +57,23 @@ let highscore = localStorage.getItem("highscore");
 //making countdown available in global to use later on
 let countdown;
 
+const endGame = () => {
+  username.push(prompt("GAME OVER! Enter your username to log your score:"));
+  logHighscore();
+  clearInterval(countdown);
+  window.location.replace("/Assets/html/highscores.html");
+  console.log(username);
+};
+
 //Function to start the timer and countdown to 0, then stop
 const startTimer = () => {
   let countdown = setInterval(function () {
     //This will minus 1 second from time
     remainingTime.innerHTML = time--;
     if (time < 0) {
-      prompt("GAME OVER! Enter your username to log your score:");
+      alert(
+        "GAME OVER! You ran out of time. Please try again after viewing the highscores."
+      );
       clearInterval(countdown);
       window.location.replace("/Assets/html/highscores.html");
     }
@@ -131,10 +143,7 @@ const chosenAnswer = (event) => {
     }
     //This will look for if the last question is answered, then ask for a name for highscores.
     if (target.matches("button") && answer === "Cascading Style Sheet") {
-      prompt("GAME OVER! Enter your username to log your score:");
-      logHighscore();
-      clearInterval(countdown);
-      window.location.replace("/Assets/html/highscores.html");
+      endGame(scores);
     }
   }
 };
