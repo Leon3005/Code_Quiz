@@ -37,13 +37,7 @@ const questions = [
   },
 ];
 
-const scores = [
-  {
-    position: ["1", "2", "3", "4", "5"],
-    username: ["LeonW", "", "", "", ""],
-    score: ["", "", "", "", ""],
-  },
-];
+let scores = [1];
 
 //Created variables for ID's from the HTML file
 const remainingTime = document.getElementById("timer");
@@ -167,10 +161,11 @@ startButton.addEventListener("click", startQuiz);
 const logHighscore = () => {
   if (highscore !== null) {
     if (time > highscore) {
+      scores.push(time);
       localStorage.setItem("highscore", time);
+      console.log(scores);
     }
   } else {
     localStorage.setItem("highscore", time);
   }
-  console.log(highscore);
 };
