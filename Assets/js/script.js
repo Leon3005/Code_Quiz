@@ -59,7 +59,7 @@ const endGame = () => {
   localStorage.setItem("username", JSON.stringify(username));
   logHighscore();
   clearInterval(countdown);
-  window.location.replace("../html/highscores.html");
+  window.location.replace("./html/highscores.html");
 };
 
 //Function to start the timer and countdown to 0, then stop
