@@ -41,8 +41,6 @@ let scores = JSON.parse(localStorage.getItem("highscore") || "[]");
 
 let username = JSON.parse(localStorage.getItem("username") || "[]");
 
-let position = [1, 2, 3, 4, 5];
-
 //Created variables for ID's from the HTML file
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");

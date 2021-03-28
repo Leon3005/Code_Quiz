@@ -11,11 +11,14 @@ body {
   text-align: center;
 }
 
-.highscoresContainer,
-#importedData {
+.highscoresContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+#highscores {
+  flex-direction: column;
 }
 
 h2 {
@@ -24,6 +27,9 @@ h2 {
 
 #importedData {
   font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .data {
