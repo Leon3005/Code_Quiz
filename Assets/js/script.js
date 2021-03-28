@@ -41,6 +41,8 @@ let scores = JSON.parse(localStorage.getItem("highscore") || "[]");
 
 let username = JSON.parse(localStorage.getItem("username") || "[]");
 
+let position = [1, 2, 3, 4, 5];
+
 //Created variables for ID's from the HTML file
 const remainingTime = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
@@ -52,7 +54,7 @@ let countdown;
 
 const endGame = () => {
   let usernamePrompt = prompt(
-    "GAME OVER! Enter your username to log your score:"
+    "GAME OVER! Enter your initials to log your score:"
   );
   username.push(usernamePrompt);
   localStorage.setItem("username", JSON.stringify(username));
