@@ -47,7 +47,6 @@ const startButton = document.getElementById("startButton");
 //Setting index to 0 (for arrays) and how many seconds the timer starts at. Also highscore value
 let i = 0;
 let time = 80;
-let highscore = localStorage.getItem("highscore");
 //making countdown available in global to use later on
 let countdown;
 
@@ -163,7 +162,7 @@ startButton.addEventListener("click", startQuiz);
 //Time is being logged instantly. need to fix
 
 const logHighscore = () => {
-  if (highscore !== null) {
+  if (scores !== null) {
     scores.push(time);
     localStorage.setItem("highscore", JSON.stringify(scores));
   } else {
