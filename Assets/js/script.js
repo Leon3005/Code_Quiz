@@ -37,7 +37,9 @@ const questions = [
   },
 ];
 
-let scores = [1];
+let scores = JSON.parse(localStorage.getItem("highscore") || "[]");
+
+let username = JSON.parse(localStorage.getItem("username") || "[]");
 
 //Created variables for ID's from the HTML file
 const remainingTime = document.getElementById("timer");
@@ -50,12 +52,14 @@ let highscore = localStorage.getItem("highscore");
 let countdown;
 
 const endGame = () => {
-  let username = prompt("GAME OVER! Enter your username to log your score:");
-  localStorage.setItem("username", username);
+  let usernamePrompt = prompt(
+    "GAME OVER! Enter your username to log your score:"
+  );
+  username.push(usernamePrompt);
+  localStorage.setItem("username", JSON.stringify(username));
   logHighscore();
   clearInterval(countdown);
   window.location.replace("/Assets/html/highscores.html");
-  console.log(username);
 };
 
 //Function to start the timer and countdown to 0, then stop
@@ -161,10 +165,9 @@ startButton.addEventListener("click", startQuiz);
 const logHighscore = () => {
   if (highscore !== null) {
     scores.push(time);
-    localStorage.setItem("highscore", time);
-    console.log(scores);
+    localStorage.setItem("highscore", JSON.stringify(scores));
   } else {
-    localStorage.setItem("highscore", time);
+    localStorage.setItem("highscore", JSON.stringify(scores));
   }
 };
 
