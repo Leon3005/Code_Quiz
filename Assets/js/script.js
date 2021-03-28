@@ -50,6 +50,7 @@ let time = 80;
 //making countdown available in global to use later on
 let countdown;
 
+//Function to ask for username after all questions are completed. Goes into array then local memory.
 const endGame = () => {
   let usernamePrompt = prompt(
     "GAME OVER! Enter your initials to log your score:"
@@ -134,7 +135,6 @@ const chosenAnswer = (event) => {
       answerCont.appendChild(h3);
       h3.setAttribute("id", "wrongAnswer");
       h3.textContent = "Incorrect!";
-      // alert("WRONG");
       time -= 9;
     }
     //This will look for if the last question is answered, then ask for a name for highscores.
@@ -159,8 +159,6 @@ const startQuiz = () => {
 
 startButton.addEventListener("click", startQuiz);
 
-//Time is being logged instantly. need to fix
-
 const logHighscore = () => {
   if (scores !== null) {
     scores.push(time);
@@ -169,5 +167,3 @@ const logHighscore = () => {
     localStorage.setItem("highscore", JSON.stringify(scores));
   }
 };
-
-// Currently only logs the score
