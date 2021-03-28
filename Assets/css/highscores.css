@@ -12,7 +12,7 @@ body {
 }
 
 .highscoresContainer,
-.importedData {
+#importedData {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -22,7 +22,7 @@ h2 {
   padding: 25px;
 }
 
-.importedData {
+#importedData {
   font-size: 1.2rem;
 }
 
