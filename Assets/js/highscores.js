@@ -1,8 +1,8 @@
 const position = [1, 2, 3, 4, 5];
 let i = 0;
 const importScores = () => {
-  getUsername = localStorage.getItem("username");
-  getScore = localStorage.getItem("highscore");
+  const getUsername = localStorage.getItem("username");
+  const getScore = localStorage.getItem("highscore");
   savedScore = JSON.parse(getScore);
   savedUsername = JSON.parse(getUsername);
   // for (let i = 0; i < position.length; i++) {
