@@ -3,8 +3,8 @@ let i = 0;
 const importScores = () => {
   const getUsername = localStorage.getItem("username");
   const getScore = localStorage.getItem("highscore");
-  savedScore = JSON.parse(getScore);
-  savedUsername = JSON.parse(getUsername);
+  const savedScore = JSON.parse(getScore);
+  const savedUsername = JSON.parse(getUsername);
   // for (let i = 0; i < position.length; i++) {
   const spanPosition = document.createElement("span");
   spanPosition.classList.add("data");
