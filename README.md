@@ -1,4 +1,4 @@
-# Code Quiz - HW04
+# Code Quiz
 
 ## Description
 
